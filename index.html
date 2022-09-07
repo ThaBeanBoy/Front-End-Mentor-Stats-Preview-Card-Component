@@ -1,33 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Stats preview card component</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Stats preview card component</title>
 
-  Get insights that help your business grow.
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap');
 
-  Discover the benefits of data analytics and make better decisions regarding revenue, customer 
-  experience, and overall efficiency.
+      :root {
+        /* Colors */
+        --Colour-very-dark-blue: hsl(233, 47%, 7%); /*main background*/
+        --Colour-dark-desaturated-blue: hsl(244, 38%, 16%); /*card background*/
+        --Colour-Soft-violet: hsl(277, 64%, 61%); /*accent*/
 
-  10k+ companies
-  314 templates
-  12m+ queries
+        --Colour-white: hsl(0, 0%, 100%); /* main heading, stats */
+        --Colour-slightly-transparent-white: hsla(
+          0,
+          0%,
+          100%,
+          0.75
+        ); /* main paragraph */
+        --Colour-slightly-transparent-white: hsla(
+          0,
+          0%,
+          100%,
+          0.6
+        ); /* stat headings */
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+        --Typeface-Inter: 'Inter', sans-serif;
+        --Typeface-Lexend-Deca: 'Lexend Deca', sans-serif;
+
+        --Stat-box-border-radius: 10px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100vw;
+        min-height: 100vh;
+        background-color: var(--Colour-very-dark-blue);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        font-family: var(--Typeface-Inter);
+      }
+
+      .stats-box {
+        background-color: var(--Colour-dark-desaturated-blue);
+        display: flex;
+        max-width: 1108px;
+        border-radius: var(--Stat-box-border-radius);
+        margin: 24px;
+      }
+
+      .stats-box .left-side {
+        padding: 72px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .stats-box .left-side h1 {
+        color: var(--Colour-white);
+        line-height: 44px;
+        /* margin-bottom: 32px; */
+      }
+
+      .stats-box .left-side h1 .purple {
+        color: var(--Colour-Soft-violet);
+      }
+
+      .stats-box .left-side .message {
+        color: var(--Colour-slightly-transparent-white);
+        line-height: 24px;
+        letter-spacing: 1px;
+      }
+
+      .stats-box .left-side .stats {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .stats-box .left-side .stats .stat .number {
+        color: var(--Colour-white);
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .stats-box .left-side .stats .stat .stat-definition {
+        color: var(--Colour-slightly-transparent-white);
+      }
+
+      .img-container {
+        position: relative;
+      }
+
+      .img-container > * {
+        border-radius: 0 var(--Stat-box-border-radius)
+          var(--Stat-box-border-radius) 0;
+      }
+
+      .colourizer {
+        height: 100%;
+        width: 100%;
+        background-color: var(--Colour-Soft-violet);
+
+        opacity: 0.5;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      img::after {
+        content: 'yo';
+        height: 100%;
+        width: 100%;
+        background-color: red;
+      }
+
+      #hero-desktop {
+        /* height: 100%; */
+      }
+      #hero-mobile {
+        display: none;
+      }
+
+      @media screen and (max-width: 1020px) {
+        .stats-box {
+          flex-direction: column-reverse;
+          align-items: center;
+        }
+
+        .stats-box .left-side {
+          padding: 36px;
+          padding-bottom: 0px;
+        }
+
+        .stats-box .left-side h1,
+        .stats-box .left-side .message {
+          text-align: center;
+        }
+
+        .stats-box .left-side h1 {
+          margin-bottom: 34px;
+        }
+
+        .stats-box .left-side .message {
+          margin-bottom: 48px;
+        }
+
+        .stats-box .left-side .stats {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .stats-box .left-side .stats .stat {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 36px;
+        }
+
+        .img-container > * {
+          border-radius: var(--Stat-box-border-radius)
+            var(--Stat-box-border-radius) 0 0;
+          width: 100%;
+        }
+
+        #hero-desktop {
+          display: none;
+        }
+        #hero-mobile {
+          display: block;
+          width: 100%;
+        }
+      }
+
+      .attribution {
+        color: var(--Colour-slightly-transparent-white);
+        font-size: 11px;
+        text-align: center;
+        margin-bottom: 16px;
+      }
+      .attribution a {
+        color: var(--Colour-Soft-violet);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stats-box">
+      <div class="left-side">
+        <h1>
+          Get <span class="purple">insights</span> that help your business grow.
+        </h1>
+
+        <p class="message">
+          Discover the benefits of data analytics and make better decisions
+          regarding revenue, customer experience, and overall efficiency.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <h3 class="number">10k+</h3>
+            <p class="stat-definition">companies</p>
+          </div>
+
+          <div class="stat">
+            <h3 class="number">314</h3>
+            <p class="stat-definition">templates</p>
+          </div>
+
+          <div class="stat">
+            <h3 class="number">12m+</h3>
+            <p class="stat-definition">queries</p>
+          </div>
+        </div>
+      </div>
+      <div class="img-container">
+        <img
+          id="hero-desktop"
+          src="./images/image-header-desktop.jpg"
+          alt="hero image"
+        />
+        <img
+          id="hero-mobile"
+          src="./images/image-header-mobile.jpg"
+          alt="hero image"
+        />
+        <div class="colourizer"></div>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </body>
 </html>
